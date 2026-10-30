@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rehabit:Swim — a motion-sensing exergame for bed-rest rehabilitation</title>
+<meta name="description" content="Rehabit:Swim turns prescribed bed-rest exercises into swimming strokes across an open sea. CHI PLAY 2026 Student Game Design Competition.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1d3d74">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rehabit-swim.github.io/">
+<meta property="og:title" content="Rehabit:Swim">
+<meta property="og:description" content="Every rep is a stroke. Every session, an island. A motion-sensing exergame for bed-rest rehabilitation.">
+<meta property="og:image" content="https://rehabit-swim.github.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/beach.webp" as="image">
+<style>
+@font-face { font-family: "Pretendard"; src: url(assets/pretendard-regular.woff) format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Pretendard"; src: url(assets/pretendard-semibold.woff) format("woff"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Pretendard"; src: url(assets/pretendard-extrabold.woff) format("woff"); font-weight: 800; font-display: swap; }
+
+:root {
+  --foam: #eef9fb;
+  --shallow: #d6f1f7;
+  --lagoon: #2b9fd0;
+  --deep: #1d3d74;
+  --abyss: #10264a;
+  --beak: #e57e12;
+  --ink: #2a3b55;
+  --measure: 34rem;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; color: var(--ink); background: var(--foam);
+  font: 400 1.0625rem/1.6 "Pretendard", -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { color: var(--deep); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin: 0; }
+h2 { font-size: clamp(1.75rem, 6vw, 2.25rem); }
+h3 { font-size: 1.125rem; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--beak); outline-offset: 3px; }
+.wrap { width: min(100% - 3rem, 44rem); margin-inline: auto; }
+.prose { max-width: var(--measure); }
+
+/* ---------- hero: the shore ---------- */
+.hero { position: relative; min-height: min(100svh, 56rem); display: grid; overflow: hidden; color: #fff; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.hero::before { content: ""; position: absolute; inset: 0 0 auto; height: 55%; background: linear-gradient(#0d3f78cc, #0d3f7800); z-index: 1; }
+.hero-inner { position: relative; z-index: 2; display: grid; grid-template-rows: auto auto 1fr auto; justify-items: center; padding: max(1.5rem, env(safe-area-inset-top)) 1.5rem 1.5rem; }
+.event { font-size: 0.875rem; font-weight: 600; line-height: 1.3; background: var(--deep); padding: 0.5rem 1.25rem; border-radius: 1rem; text-align: center; }
+.event b { display: block; font-size: 1rem; font-weight: 800; letter-spacing: 0.02em; }
+.hero h1 { margin-top: 1.75rem; width: min(80vw, 26rem); }
+.plate { align-self: end; justify-self: stretch; max-width: 30rem; margin-inline: auto; position: relative;
+  background: #ffffffeb; color: var(--deep); border-radius: 1.25rem; padding: 1.25rem 1.5rem; margin-top: 6rem; }
+.tagline { font-size: clamp(1.375rem, 5.6vw, 1.75rem); font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; }
+.sub { margin-top: 0.5rem; color: var(--lagoon); font-weight: 600; font-size: 1rem; line-height: 1.4; }
+.plate .duck { position: absolute; right: 0.25rem; top: -5.6rem; width: 7.5rem; }
+
+/* ---------- booth ---------- */
+.booth { margin-top: -0.5rem; padding: 2.5rem 0 1rem; }
+.booth-card { position: relative; background: var(--deep); color: #fff; border-radius: 1.5rem; padding: 1.75rem 1.5rem 1.5rem; }
+.booth-card h2 { color: #fff; font-size: 1.5rem; padding-right: 6rem; }
+.booth-card .duck { position: absolute; right: 0.75rem; top: -2.75rem; width: 7.5rem; }
+.steps { list-style: none; margin: 1.25rem 0 0; padding: 0; counter-reset: s; display: grid; gap: 0.85rem; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 2rem 1fr; gap: 0.75rem; align-items: start; font-size: 1.0625rem; line-height: 1.45; }
+.steps li::before { content: counter(s); display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--lagoon); font-weight: 800; }
+
+/* ---------- sections ---------- */
+section { padding: 3.5rem 0; }
+section > .wrap > h2 + p, .lead { margin-top: 1rem; }
+.about { background: linear-gradient(var(--foam), var(--shallow)); }
+.goals { margin: 2.25rem 0 0; display: grid; gap: 1.5rem; }
+.goals div { padding-left: 1.1rem; border-left: 4px solid var(--lagoon); }
+.goals dt { color: var(--deep); font-weight: 800; font-size: 1.125rem; }
+.goals dd { margin: 0.25rem 0 0; }
+
+.play { background: var(--shallow); }
+.strokes { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+.strokes li { background: #fff; border-radius: 1rem; padding: 0.5rem 0.5rem 1rem; text-align: center; }
+.strokes img { aspect-ratio: 1; object-fit: cover; border-radius: 0.75rem; }
+.strokes b { display: block; color: var(--deep); font-size: 1rem; margin-top: 0.25rem; }
+.strokes span { color: var(--lagoon); font-weight: 600; font-size: 0.9375rem; }
+.feedback { margin-top: 2.5rem; display: grid; gap: 1rem; }
+.feedback img { border-radius: 1rem; box-shadow: 0 0.75rem 2rem -1rem #10264a66; }
+.feedback h3 { color: var(--beak); font-size: 1.25rem; }
+.feedback p { margin-top: 0.4rem; }
+
+/* the swim: the one moving thing on the page */
+.swim { position: relative; height: 9rem; background: var(--shallow); overflow: hidden; }
+.swim svg { position: absolute; inset: auto 0 0; width: 100%; height: 5.5rem; }
+.swim img { position: absolute; left: 50%; bottom: 2.4rem; width: min(70vw, 22rem); translate: -50% 0; animation: bob 3.2s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(0.45rem) rotate(-1.5deg); } }
+@media (prefers-reduced-motion: reduce) { .swim img { animation: none; } }
+
+.cycle { background: #7ec8e3; color: var(--abyss); }
+.cycle h2 { color: var(--abyss); }
+.loop { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+.loop li { background: #ffffffd9; border-radius: 1rem; padding: 0.85rem 1rem; }
+.loop b { display: block; color: var(--deep); font-size: 1.125rem; }
+.loop span { font-size: 0.9375rem; }
+.loop li:nth-child(2) { background: var(--deep); color: #fff; }
+.loop li:nth-child(2) b { color: #fff; }
+.cycle .lead { margin-top: 1.25rem; max-width: var(--measure); }
+
+.team { background: var(--abyss); color: #d7e6f5; }
+.team h2 { color: #fff; }
+.groups { margin-top: 2rem; display: grid; gap: 1.5rem; }
+.groups h3 { color: #fff; font-size: 1.0625rem; line-height: 1.35; }
+.groups p { margin-top: 0.3rem; }
+.funding { margin-top: 2.25rem; font-size: 0.9375rem; color: #a9c1dc; max-width: var(--measure); }
+
+.partners { background: var(--abyss); padding-top: 0; }
+.partners-card { background: #fff; border-radius: 1.5rem; padding: 1.75rem 1.5rem 2rem; }
+.partners-card h2 { font-size: 1.375rem; }
+.partners-card p { margin-top: 0.4rem; font-weight: 600; color: var(--deep); }
+.logos { list-style: none; margin: 1.75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1.5rem 2rem; align-items: center; justify-content: center; }
+.logos img { height: 2.6rem; width: auto; }
+.logos .gc img { height: 3.4rem; }
+
+footer { background: var(--abyss); color: #8fa8c6; font-size: 0.875rem; padding: 0 0 max(2.5rem, env(safe-area-inset-bottom)); }
+
+@media (min-width: 46rem) {
+  .strokes { grid-template-columns: repeat(4, 1fr); }
+  .feedback { grid-template-columns: 1.2fr 1fr; align-items: center; gap: 1.75rem; }
+  .loop { grid-template-columns: repeat(4, 1fr); }
+  .groups { grid-template-columns: repeat(3, 1fr); }
+  .logos img { height: 3rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="hero-bg" src="assets/beach.webp" width="1055" height="1491" alt="">
+  <div class="hero-inner">
+    <p class="event"><b>CHI PLAY 2026</b>Student Game Design Competition</p>
+    <h1><img src="assets/logo.webp" width="800" height="508" alt="Rehabit:Swim"></h1>
+    <div></div>
+    <div class="plate">
+      <p class="tagline">Every rep is a stroke.<br>Every session, an island.</p>
+      <p class="sub">A motion-sensing exergame for bed-rest rehabilitation</p>
+      <img class="duck" src="assets/duck-salute.webp" width="520" height="416" alt="">
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="booth">
+    <div class="wrap">
+      <div class="booth-card">
+        <img class="duck" src="assets/duck-wave.webp" width="440" height="402" alt="">
+        <h2>Try it at our booth</h2>
+        <ol class="steps">
+          <li>Hold a Joy-Con. It works as the motion sensor.</li>
+          <li>Follow the exercise on screen.</li>
+          <li>Every rep swims you forward. Reach the island!</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <section class="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <h2 id="about-h">Rehabilitation as an ocean journey</h2>
+      <p class="prose">Patients on long bed rest must repeat prescribed exercises every day, yet the routine is monotonous and most exergames assume a player who can stand or sit. Rehabit:Swim is built for the bed: each exercise becomes a swimming stroke that carries you toward an island.</p>
+      <dl class="goals prose">
+        <div><dt>Accessible</dt><dd>A low-cost motion sensor and a bedside touchscreen let patients play on their own, in bed.</dd></div>
+        <div><dt>Personalized</dt><dd>Clinicians prescribe the exercise, reps and sets; calibration sets each patient’s own thresholds.</dd></div>
+        <div><dt>Built for long stays</dt><dd>A bright, open sea replaces the hospital walls, and every finished session ends on an island.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="play" aria-labelledby="play-h">
+    <div class="wrap">
+      <h2 id="play-h">Your movement moves the swimmer</h2>
+      <p class="prose">Each exercise maps to a swimming stroke. Every valid repetition carries the swimmer closer to the island.</p>
+      <ul class="strokes">
+        <li><img src="assets/ex-bicepscurl.webp" width="560" height="560" loading="lazy" alt="Seated biceps curl"><b>Biceps Curl</b><span>Front crawl</span></li>
+        <li><img src="assets/ex-shoulderpress.webp" width="560" height="560" loading="lazy" alt="Seated shoulder press"><b>Shoulder Press</b><span>Breaststroke</span></li>
+        <li><img src="assets/ex-kneeext.webp" width="560" height="560" loading="lazy" alt="Seated knee extension"><b>Knee Extension</b><span>Breaststroke</span></li>
+        <li><img src="assets/ex-legraise.webp" width="560" height="560" loading="lazy" alt="Straight leg raise"><b>Straight Leg Raise</b><span>Backstroke</span></li>
+      </ul>
+      <div class="feedback">
+        <img src="assets/screenshot.webp" width="831" height="468" loading="lazy" alt="In-game view: the swimmer heads to an island while a GOOD rating appears">
+        <div>
+          <h3>Perfect, Good, Bad</h3>
+          <p>Fuller movements earn bigger ripples and bubbles, and even a small one gets a response.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="swim" aria-hidden="true">
+    <img src="assets/swimmer.webp" width="900" height="347" loading="lazy" alt="">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path fill="#a9dcee" d="M0 40 C 240 0 480 80 720 40 S 1200 0 1440 40 V120 H0Z"/>
+      <path fill="#7ec8e3" d="M0 70 C 260 30 520 110 780 70 S 1240 30 1440 70 V120 H0Z"/>
+    </svg>
+  </div>
+
+  <section class="cycle" aria-labelledby="cycle-h">
+    <div class="wrap">
+      <h2 id="cycle-h">One cycle, two roles</h2>
+      <ol class="loop">
+        <li><b>Prescribe</b><span>Clinician</span></li>
+        <li><b>Play</b><span>Patient</span></li>
+        <li><b>Record</b><span>System</span></li>
+        <li><b>Adjust</b><span>Clinician</span></li>
+      </ol>
+      <p class="lead">Clinicians prescribe and adjust, patients play, and every session is logged for the next prescription.</p>
+    </div>
+  </section>
+
+  <section class="team" aria-labelledby="team-h">
+    <div class="wrap">
+      <h2 id="team-h">Made by game designers, clinicians and engineers</h2>
+      <div class="groups">
+        <div>
+          <h3>Sungkyunkwan University<br>Department of Game Design</h3>
+          <p>ByungJoon Kim, Changho Lee, Yujin Kim, Donghyeon Kim, Jeongyeon Park, Ga Young Lee, Myungkyu Lee, Jaejun Lee</p>
+        </div>
+        <div>
+          <h3>Asan Medical Center, Rehabilitation Medicine<br>University of Ulsan College of Medicine</h3>
+          <p>Won Kim, Yeji Kim, Jihye Kim</p>
+        </div>
+        <div>
+          <h3>UNIST<br>Department of Biomedical Engineering</h3>
+          <p>Gwanseob Shin, Jiwon Ryu, Cheoljae Lee</p>
+        </div>
+      </div>
+      <p class="funding">Supported by the Seoul RISE Center (Ministry of Education and Seoul Metropolitan Government, 2026-RISE-01-018-06) and an NRF grant funded by MSIT (RS-2024-00346048).</p>
+    </div>
+  </section>
+
+  <section class="partners" aria-labelledby="partners-h">
+    <div class="wrap">
+      <div class="partners-card">
+        <h2 id="partners-h">In collaboration with</h2>
+        <p>Asan Medical Center and University of Ulsan College of Medicine</p>
+        <ul class="logos">
+          <li><img src="assets/logo-asan.webp" width="433" height="120" loading="lazy" alt="Asan Medical Center"></li>
+          <li><img src="assets/logo-uou.webp" width="648" height="120" loading="lazy" alt="University of Ulsan"></li>
+          <li><img src="assets/logo-unist.webp" width="474" height="120" loading="lazy" alt="UNIST, Ulsan National Institute of Science and Technology"></li>
+          <li><img src="assets/logo-skku.webp" width="524" height="120" loading="lazy" alt="Sungkyunkwan University"></li>
+          <li class="gc"><img src="assets/logo-gamecenter.webp" width="112" height="150" loading="lazy" alt="SKKU Game Center"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Rehabit:Swim team, Department of Game Design, Sungkyunkwan University</div>
+</footer>
+
+</body>
+</html>
